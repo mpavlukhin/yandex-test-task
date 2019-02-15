@@ -14,7 +14,7 @@ class RandomDataFileCreator(object):
 
 		self.emails = ['pavlukhinma@yandex.ru', 'maxtarenvk@yandex.ru', 'pavlukhinm@gmail.com', 'mpavlukhin@yahoo.com']
 
-	def create_random_data_file(self, filename='services_info', number_of_lines=1000):
+	def create_random_data_file(self, filename, number_of_lines=1000):
 		self._fill_file_with_rand_data(filename, number_of_lines)
 
 	def _fill_file_with_rand_data(self, filename, number_of_lines):
@@ -28,7 +28,7 @@ class RandomDataFileCreator(object):
 		cpu_limit = random.randint(10, 101)
 		memory_limit = random.randint(10, 101)
 
-		cpu_usage_list = [random.randint(10, cpu_limit + 1) for _ in range(5, 11)]
+		cpu_usage_list = [random.randint(10, cpu_limit + 1) for _ in range(5, random.randint(11, 20))]
 		cpu_usage = ','.join(map(str, cpu_usage_list))
 
 		memory_usage_list = [random.randint(10, memory_limit + 1) for _ in range(5, 11)]
