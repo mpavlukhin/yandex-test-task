@@ -8,7 +8,7 @@ class ServicesDataHandler(object):
     def __init__(self):
         pass
 
-    def handle_data(self, filename):
+    def handle_service_data(self, filename):
         services_info_list = []
 
         with open(filename, 'r') as infile:
@@ -22,7 +22,7 @@ class ServicesDataHandler(object):
 
     def _parse_data(self, service_info):
         service_name = service_info[0]
-        owners = service_info[1].split()
+        owners = service_info[1].split(sep=',')
         cpu_limit = int(service_info[2])
         memory_limit = int(service_info[3])
 
@@ -39,7 +39,8 @@ class ServicesDataHandler(object):
 
         return (
             service_name, owners, cpu_limit, memory_limit, cpu_usage_list,
-            memory_usage_list, cpu_ratio, memory_ratio
+            memory_usage_list, required_cpu_quote, required_memory_quote,
+            cpu_ratio, memory_ratio
         )
 
     def _calc_quantile(self, dist_list, perc=0.9):
